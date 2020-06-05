@@ -1,10 +1,12 @@
 import React from "react";
+import Header from "./Header/Header";
+import Display from "./display/Display";
 
 const Main = () => {
   return (
     <>
-      <h1>Header Component</h1>
-      <h3>Display Component</h3>
+      <Header />
+      <Display />
     </>
   );
 };
