@@ -1,6 +1,7 @@
 import React from "react";
 import "./Display.css";
 import Container from "../container/Container";
+import Button from "../container/button/Button";
 
 const Display = () => {
   return (
@@ -21,12 +22,8 @@ const Display = () => {
             </div>
           </div>
           <div className="password-display-icons">
-            <button className="copy-btn">
-              <i className="far fa-copy" />
-            </button>
-            <button className="generate-btn">
-              <i className="fas fa-sync-alt" />
-            </button>
+            <Button className="copy-btn" iconClass="far fa-copy" />
+            <Button className="generate-btn" iconClass="fas fa-sync-alt" />
           </div>
         </div>
       </div>
