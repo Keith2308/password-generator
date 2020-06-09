@@ -2,10 +2,15 @@ import React from "react";
 import "./Container.css";
 import Button from "./button/Button";
 import Slider from "./slider/Slider";
+import Checkbox from "./checkbox/Checkbox";
 
 const Container = () => {
   const onChangeSlider = (e) => {
     console.log(e.target.value);
+  };
+
+  const onChangeCheckBox = (e) => {
+    console.log(e.target.checked);
   };
 
   return (
@@ -28,7 +33,16 @@ const Container = () => {
         </div>
 
         <div className="col-md-12">
-          <div className="row checkbox-container">Checkbox Component</div>
+          <div className="row checkbox-container">
+            <Checkbox
+              name="uppercase"
+              checked={true}
+              label="Uppercese"
+              value={true}
+              onChange={onChangeCheckBox}
+              disabled={false}
+            />
+          </div>
         </div>
       </div>
 
