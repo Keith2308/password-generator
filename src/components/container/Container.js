@@ -4,6 +4,13 @@ import Button from "./button/Button";
 import Slider from "./slider/Slider";
 import Checkbox from "./checkbox/Checkbox";
 
+const CHECKBOX_LIST = [
+  { id: 0, name: "uppercase", label: "Uppercase", isChecked: true },
+  { id: 1, name: "lowercase", label: "Lowercase", isChecked: true },
+  { id: 2, name: "symbols", label: "Symbols", isChecked: true },
+  { id: 3, name: "numbers", label: "Numbers", isChecked: true },
+];
+
 const Container = () => {
   const onChangeSlider = (e) => {
     console.log(e.target.value);
@@ -34,14 +41,17 @@ const Container = () => {
 
         <div className="col-md-12">
           <div className="row checkbox-container">
-            <Checkbox
-              name="uppercase"
-              checked={true}
-              label="Uppercese"
-              value={true}
-              onChange={onChangeCheckBox}
-              disabled={false}
-            />
+            {CHECKBOX_LIST.map((checkbox) => (
+              <Checkbox
+                key={checkbox.id}
+                name={Checkbox.name}
+                checked={checkbox.isChecked}
+                label={checkbox.label}
+                value={checkbox.isChecked}
+                onChange={onChangeCheckBox}
+                disabled={false}
+              />
+            ))}
           </div>
         </div>
       </div>
