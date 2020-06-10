@@ -49,7 +49,15 @@ const Display = () => {
               />
             </div>
             <div className="password-description">
-              <i className="fas fa-check-circle" /> Strong password
+              {password && password.length > 10 ? (
+                <>
+                  <i className="fas fa-check-circle" /> {pwdDescription}{" "}
+                </>
+              ) : (
+                <>
+                  <i className="fas fa-exclamation-circle" /> {pwdDescription}{" "}
+                </>
+              )}
             </div>
           </div>
           <div className="password-display-icons">
