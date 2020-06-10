@@ -42,6 +42,7 @@ const Container = (props) => {
     setRangeValue(e.target.value);
     setPasswordLength(e.target.value);
     setRange(e.target.value);
+    passwordGenerated(checkbox, e.target.value);
   };
 
   const onChangeCheckBox = (e) => {

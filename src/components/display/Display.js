@@ -18,7 +18,7 @@ const Display = () => {
     <>
       <div className="row">
         <div className="col-md-12 password-display-container">
-          <div>
+          <div style={{ width: "100%" }}>
             <div className="password-display">
               <input
                 type="text"
