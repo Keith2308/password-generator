@@ -43,7 +43,7 @@ const Display = () => {
             <div className="password-display">
               <input
                 type="text"
-                defaultValue={password}
+                value={password}
                 className="password-display-input"
                 readOnly
               />
