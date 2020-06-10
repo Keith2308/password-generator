@@ -13,13 +13,26 @@ const CHECKBOX_LIST = [
 
 const Container = () => {
   const [rangeValue, setRangeValue] = useState(12);
+  const [checkbox, setCheckBox] = useState({
+    uppercase: true,
+    lowercase: true,
+    symbols: true,
+    numbers: true,
+  });
 
   const onChangeSlider = (e) => {
     setRangeValue(e.target.value);
   };
 
   const onChangeCheckBox = (e) => {
-    console.log(e.target.checked);
+    let { name, checked } = e.target;
+    CHECKBOX_LIST.map((checkbox) => {
+      if (checkbox.name === name) {
+        checkbox.isChecked = checked;
+        setCheckBox({ [name]: checkbox.isChecked });
+      }
+      return "";
+    });
   };
 
   return (
@@ -46,7 +59,7 @@ const Container = () => {
             {CHECKBOX_LIST.map((checkbox) => (
               <Checkbox
                 key={checkbox.id}
-                name={Checkbox.name}
+                name={checkbox.name}
                 checked={checkbox.isChecked}
                 label={checkbox.label}
                 value={checkbox.isChecked}
