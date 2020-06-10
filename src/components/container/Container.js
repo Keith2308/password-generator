@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Container.css";
 import Button from "./button/Button";
 import Slider from "./slider/Slider";
 import Checkbox from "./checkbox/Checkbox";
+import { generatePassword, setPasswordLength } from "../../utils/Helper";
 
 const CHECKBOX_LIST = [
   { id: 0, name: "uppercase", label: "Uppercase", isChecked: true },
@@ -19,6 +20,18 @@ const Container = () => {
     symbols: true,
     numbers: true,
   });
+
+  const { uppercase, lowercase, symbols, numbers } = checkbox;
+
+  useEffect(() => {
+    setPasswordLength(rangeValue);
+    passwordGenerated(checkbox, rangeValue);
+  }, [uppercase, lowercase, symbols, numbers]);
+
+  const passwordGenerated = (checkbox, rangeValue) => {
+    const pwd = generatePassword(checkbox, rangeValue);
+    console.log(pwd);
+  };
 
   const onChangeSlider = (e) => {
     setRangeValue(e.target.value);
