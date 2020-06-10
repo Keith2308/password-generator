@@ -13,7 +13,7 @@ const CHECKBOX_LIST = [
 ];
 
 const Container = (props) => {
-  const { setPassword } = props;
+  const { setPassword, setRange, setPasswordProps } = props;
   const [rangeValue, setRangeValue] = useState(12);
   const [checkbox, setCheckBox] = useState({
     uppercase: true,
@@ -26,16 +26,22 @@ const Container = (props) => {
 
   useEffect(() => {
     setPasswordLength(rangeValue);
+    setRange(rangeValue);
+    setRangeValue(rangeValue);
     passwordGenerated(checkbox, rangeValue);
+    // eslint-disable-next-line
   }, [uppercase, lowercase, symbols, numbers]);
 
   const passwordGenerated = (checkbox, rangeValue) => {
     const pwd = generatePassword(checkbox, rangeValue);
     setPassword(pwd);
+    setPasswordProps(checkbox);
   };
 
   const onChangeSlider = (e) => {
     setRangeValue(e.target.value);
+    setPasswordLength(e.target.value);
+    setRange(e.target.value);
   };
 
   const onChangeCheckBox = (e) => {

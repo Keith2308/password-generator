@@ -2,9 +2,17 @@ import React, { useState } from "react";
 import "./Display.css";
 import Container from "../container/Container";
 import Button from "../container/button/Button";
+import { generatePassword } from "../../utils/Helper";
 
 const Display = () => {
   const [password, setPassword] = useState();
+  const [rangeValue, setRange] = useState();
+  const [passwordProps, setPasswordProps] = useState();
+
+  const generateNewPassword = () => {
+    const pwd = generatePassword(passwordProps, rangeValue);
+    setPassword(pwd);
+  };
 
   return (
     <>
@@ -25,11 +33,19 @@ const Display = () => {
           </div>
           <div className="password-display-icons">
             <Button className="copy-btn" iconClass="far fa-copy" />
-            <Button className="generate-btn" iconClass="fas fa-sync-alt" />
+            <Button
+              className="generate-btn"
+              iconClass="fas fa-sync-alt"
+              handleClick={generateNewPassword}
+            />
           </div>
         </div>
       </div>
-      <Container setPassword={setPassword} />
+      <Container
+        setPassword={setPassword}
+        setRange={setRange}
+        setPasswordProps={setPasswordProps}
+      />
     </>
   );
 };
