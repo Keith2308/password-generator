@@ -5,9 +5,9 @@ import Button from "../container/button/Button";
 import { generatePassword } from "../../utils/Helper";
 
 const Display = () => {
-  const [password, setPassword] = useState();
-  const [rangeValue, setRange] = useState();
-  const [passwordProps, setPasswordProps] = useState();
+  const [password, setPassword] = useState("");
+  const [rangeValue, setRange] = useState("");
+  const [passwordProps, setPasswordProps] = useState("");
 
   let pwdDescription = "";
 
