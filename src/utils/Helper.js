@@ -66,3 +66,8 @@ export const generatePassword = (passwordProps, pwdLength) => {
 
   return password;
 };
+
+export const copyToClipBoard = (elementRef) => {
+  elementRef.select();
+  document.execCommand("copy");
+};

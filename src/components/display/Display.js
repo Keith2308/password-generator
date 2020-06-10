@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Display.css";
 import Container from "../container/Container";
 import Button from "../container/button/Button";
-import { generatePassword } from "../../utils/Helper";
+import { generatePassword, copyToClipBoard } from "../../utils/Helper";
 
 const Display = () => {
   const [password, setPassword] = useState("");
   const [rangeValue, setRange] = useState("");
   const [passwordProps, setPasswordProps] = useState("");
+  const passwordRef = useRef();
 
   let pwdDescription = "";
 
@@ -16,6 +17,10 @@ const Display = () => {
     setPassword(pwd);
   };
 
+  const copyClipBoard = (e) => {
+    e.preventDefault();
+    copyToClipBoard(passwordRef.current);
+  };
   const setBackgroundColor = (password) => {
     if (password && password.length === 1 && password.length <= 5) {
       pwdDescription = "Bad Password";
@@ -42,6 +47,7 @@ const Display = () => {
           <div style={{ width: "100%" }}>
             <div className="password-display">
               <input
+                ref={passwordRef}
                 type="text"
                 value={password}
                 className="password-display-input"
@@ -61,7 +67,11 @@ const Display = () => {
             </div>
           </div>
           <div className="password-display-icons">
-            <Button className="copy-btn" iconClass="far fa-copy" />
+            <Button
+              className="copy-btn"
+              iconClass="far fa-copy"
+              handleClick={copyClipBoard}
+            />
             <Button
               className="generate-btn"
               iconClass="fas fa-sync-alt"
