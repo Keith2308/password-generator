@@ -12,7 +12,8 @@ const CHECKBOX_LIST = [
   { id: 3, name: "numbers", label: "Numbers", isChecked: true },
 ];
 
-const Container = () => {
+const Container = (props) => {
+  const { setPassword } = props;
   const [rangeValue, setRangeValue] = useState(12);
   const [checkbox, setCheckBox] = useState({
     uppercase: true,
@@ -30,7 +31,7 @@ const Container = () => {
 
   const passwordGenerated = (checkbox, rangeValue) => {
     const pwd = generatePassword(checkbox, rangeValue);
-    console.log(pwd);
+    setPassword(pwd);
   };
 
   const onChangeSlider = (e) => {

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Display.css";
 import Container from "../container/Container";
 import Button from "../container/button/Button";
 
 const Display = () => {
+  const [password, setPassword] = useState();
+
   return (
     <>
       <div className="row">
@@ -12,8 +14,8 @@ const Display = () => {
             <div className="password-display">
               <input
                 type="text"
+                defaultValue={password}
                 className="password-display-input"
-                value="asdasdsada"
                 readOnly
               />
             </div>
@@ -27,7 +29,7 @@ const Display = () => {
           </div>
         </div>
       </div>
-      <Container />
+      <Container setPassword={setPassword} />
     </>
   );
 };
